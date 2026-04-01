@@ -179,6 +179,33 @@ export default function AboutPage() {
           </p>
         </section>
 
+        {/* Meet the Founder */}
+        <section className="bg-white rounded-2xl border border-slate-200 p-8 mb-8">
+          <h2 className="text-2xl font-black text-[#0F172A] mb-4">Meet the Founder</h2>
+          <div className="flex flex-col md:flex-row gap-6 items-start">
+            <img
+              src="/images/team/marvin.webp"
+              alt="Marvin — Founder & Developer"
+              width={160}
+              height={160}
+              className="rounded-2xl object-cover"
+            />
+            <div>
+              <h3 className="text-xl font-bold text-[#0F172A] mb-1">Marvin</h3>
+              <p className="text-sm text-[#2563EB] font-medium mb-3">Founder &amp; Developer</p>
+              <p className="text-slate-600 mb-3">
+                Marvin is a Dutch web developer and digital entrepreneur who builds tools and resources to help
+                people get started online. From travel guides to hosting reviews, VPN comparisons to WordPress
+                tutorials — he creates practical, honest content based on hands-on testing and real experience.
+              </p>
+              <p className="text-slate-600">
+                When he&apos;s not coding, you&apos;ll find him exploring Southeast Asia or testing the latest
+                web technologies for his growing network of niche websites.
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* CTA */}
         <div className="text-center">
           <p className="text-slate-500 mb-4">Ready to find the right host for your website?</p>
