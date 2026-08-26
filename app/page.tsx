@@ -186,7 +186,7 @@ export default function HomePage() {
           </div>
           <div className="tool-terminal" role="group" aria-label="Example result from the tool">
             <div className="terminal-header">
-              <span>HOSTING TYPE PREVIEW</span>
+              <span>EXAMPLE RESULT</span>
               <span className="status-dot">ready</span>
             </div>
             <div className="terminal-body">

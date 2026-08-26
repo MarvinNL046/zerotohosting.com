@@ -146,7 +146,7 @@ export default function HermesVsOpenClawGuidePage() {
         ]}
         eyebrow={
           <>
-            Hermes vs OpenClaw / updated{" "}
+            Updated{" "}
             <time dateTime={page.lastModified}>{formatPageDate(page.lastModified)}</time>
           </>
         }
@@ -173,7 +173,7 @@ export default function HermesVsOpenClawGuidePage() {
       <EditorialGuideLayout toc={toc}>
         <section id="short-difference" className="anchor-target">
           <p className="eyebrow">Start with the center</p>
-          <h2>OpenClaw centers the Gateway. Hermes centers the agent&apos;s learning and tools.</h2>
+          <h2>OpenClaw is built around its Gateway. Hermes focuses on learning and tools.</h2>
           <div className="answer-split-grid product-answer-grid">
             <article>
               <span className="guide-card-number">H</span>
@@ -207,8 +207,8 @@ export default function HermesVsOpenClawGuidePage() {
           <p>
             Both connect to messaging services and tools. Both can save setup
             information and connect to an AI service outside the server. That
-            outside service may receive your prompts. The difference here is a
-            product focus, not a hard wall around every feature.
+            outside service may receive your prompts. These are their main
+            focuses. Both tools may offer other features too.
           </p>
         </section>
 

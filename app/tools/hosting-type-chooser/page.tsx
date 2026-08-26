@@ -188,7 +188,7 @@ export default async function HostingTypeChooserPage({
             <Question
               number="8"
               name="compliance"
-              question="Do you have special legal or data-location rules, or must the site stay online almost all the time?"
+              question="Do any rules say where your data must stay or how often your site must be online?"
               values={COMPLIANCE_OPTIONS}
               labels={CHOOSER_OPTION_LABELS.compliance}
               selected={submitted ? input.compliance : undefined}

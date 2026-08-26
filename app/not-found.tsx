@@ -9,8 +9,8 @@ export default function NotFound() {
         <p className="eyebrow">404 / page not found</p>
         <h1>We could not find this page.</h1>
         <p className="lede">
-          The page may have been part of an older test site. The page address may
-          also be wrong or incomplete.
+          The page may have moved. The page address may also be wrong or
+          incomplete.
         </p>
         <div className="button-row">
           <Link className="button button-primary" href="/">

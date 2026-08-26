@@ -116,7 +116,7 @@ export default function WebHostingCostGuidePage() {
         breadcrumbs={[{ href: "/", label: "Home" }, { label: "Web hosting cost" }]}
         eyebrow={
           <>
-            Cost guide / checked{" "}
+            Updated{" "}
             <time dateTime={page.lastModified}>{formatPageDate(page.lastModified)}</time>
           </>
         }

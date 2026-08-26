@@ -5,7 +5,7 @@ import { formatPageDate, publicPageFrontmatter } from "@/lib/public-pages";
 export const metadata = createPageMetadata({
   title: "Contact",
   description:
-    "Learn why contact is not available in this private preview and what to include when it opens.",
+    "Read the current contact status and learn what details help us check a website error.",
   path: publicPageFrontmatter.contact.path,
 });
 
@@ -14,11 +14,12 @@ export default function ContactPage() {
     <main id="main-content" className="page-shell">
       <header className="page-hero">
         <p className="eyebrow">Contact</p>
-        <h1>Contact is not available yet.</h1>
+        <h1>Contact status and corrections.</h1>
         <p className="lede">
-          This site is still a private preview. We will add and test an email
-          address before the site opens to the public. This page has no contact
-          form. It does not collect names, email addresses, messages, or files.
+          ZeroToHosting does not currently offer direct email help or a contact
+          form. This page explains how we check errors and which details are
+          useful. The site does not collect names, email addresses, messages,
+          or files.
         </p>
         <p className="meta-row">
           Status updated:{" "}
@@ -30,19 +31,19 @@ export default function ContactPage() {
 
       <section className="content-section" aria-labelledby="status-heading">
         <div className="callout">
-          <h2 id="status-heading">Why there is no email address yet</h2>
+          <h2 id="status-heading">Why there is no email address</h2>
           <p>
-            We need to make sure email arrives. We also need to block spam and
-            protect messages. Then we can say when you may get a reply.
+            We will only publish an email address after we can test that it
+            works, block spam, protect messages, and give a realistic reply time.
           </p>
         </div>
       </section>
 
       <section className="content-section" aria-labelledby="future-heading">
         <div className="prose">
-          <h2 id="future-heading">What to include when contact opens</h2>
+          <h2 id="future-heading">Details that help us check an error</h2>
           <p>
-            When contact opens, please include these details when you report an error:
+            Save these details when you find a possible error:
           </p>
           <ul>
             <li>The page link and exact words you want us to check.</li>
@@ -77,7 +78,7 @@ export default function ContactPage() {
             <h2>Tool questions</h2>
             <p>
               Read ‘How we work’ to learn what the chooser can and cannot decide.
-              Help for the chooser is not available yet.
+              Direct help with a result is not currently available.
             </p>
           </article>
         </div>

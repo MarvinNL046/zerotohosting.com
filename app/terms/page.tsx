@@ -105,12 +105,11 @@ export default function TermsPage() {
         <div className="prose">
           <h2 id="limits-heading">Our responsibility and its limits</h2>
           <p>
-            We try to publish clear information based on facts you can check.
-            Still, mistakes or old details may appear. As far as the law allows,
-            ZeroToHosting is not responsible for losses caused by treating this
-            information as a promise or by making an important choice without
-            checking current facts. These terms do not take away rights that
-            local law says you must keep.
+            We try to use facts you can check, but some details may be wrong or
+            out of date. As far as the law allows, ZeroToHosting is not
+            responsible for losses caused by using this information as a
+            promise. Always check current facts before an important choice.
+            These terms do not remove rights given to you by law.
           </p>
           <p>
             If something looks wrong, read our

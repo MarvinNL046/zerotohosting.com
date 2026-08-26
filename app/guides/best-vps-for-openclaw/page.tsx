@@ -182,7 +182,7 @@ export default function BestVpsForOpenClawGuidePage() {
         ]}
         eyebrow={
           <>
-            OpenClaw VPS guide / updated{" "}
+            Updated{" "}
             <time dateTime={page.lastModified}>{formatPageDate(page.lastModified)}</time>
           </>
         }

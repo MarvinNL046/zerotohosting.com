@@ -142,8 +142,8 @@ export default function MethodologyPage() {
             and explain the correction.
           </p>
           <p>
-            We will add a tested email address before the site opens to the public.
-            You cannot send corrections through this preview yet. See the
+            Direct correction requests are not currently available. We still
+            review dated sources and update pages when information changes. See the
             <Link className="text-link" href="/contact/"> contact page</Link> for
             the latest status.
           </p>

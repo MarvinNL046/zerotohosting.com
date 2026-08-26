@@ -72,20 +72,27 @@ a page update.
 ## Indexing and go-live gate
 
 The site is deliberately `noindex` and returns `Disallow: /` unless
-`SITE_INDEXABLE=true` is present in the build environment. Do not enable that
-flag until all of the following are confirmed:
+`SITE_INDEXABLE=true` is present in the build environment. Keep the default off
+for unfinished previews. A production release may enable it after the owner has
+approved the public site and these checks pass:
 
-- the operator/controller legal name, address, and required registration details;
-- a tested public contact address for general, correction, and privacy requests;
-- the production hosting, CDN, security, and logging providers;
-- the legal basis, recipients, retention criteria, transfer position, user rights,
-  and complaint route required by the production privacy notice;
-- final legal review for the intended countries and operating entity;
-- explicit approval to deploy, connect the domain, and enable indexing.
+- About, Contact, Privacy, Terms, affiliate disclosure, and methodology pages
+  describe the site as it actually works;
+- the privacy notice names the current production host and explains the limited
+  technical data that may be logged;
+- affiliate links are clearly labeled and use the required link attributes;
+- robots, canonical links, the sitemap, page-level `lastModified` dates, and the
+  main user journeys have been tested on the production build;
+- explicit approval to deploy, connect the domain, and enable indexing has been
+  recorded.
+
+Do not invent an address, registration number, person, or contact method. Add
+the correct details when the owner supplies them. Before adding analytics,
+forms, accounts, newsletters, or other data collection, update the privacy and
+contact pages and get the needed legal review for the countries served.
 
 Release 1 contains no paid provider rankings. Some pages may contain clearly
 labeled affiliate links. Guides use dated screenshots from official English
 pages only as reading or setup examples. A screenshot does not prove current
 pricing, speed, uptime, support quality, or a provider ranking. Deployment, DNS,
-Search Console, and new affiliate applications are intentionally outside this
-branch.
+Search Console, and new affiliate applications require separate owner approval.

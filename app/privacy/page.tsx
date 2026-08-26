@@ -59,10 +59,9 @@ export default function PrivacyPage() {
             abuse and keep it safe.
           </p>
           <p>
-            Those companies decide how they protect their logs and how long they
-            keep them. Their own terms and privacy notices apply. Before the site
-            opens to the public, this notice will name those companies and
-            explain how long they keep logs.
+            ZeroToHosting is hosted and delivered by Vercel. Vercel decides how
+            it protects its technical logs and how long it keeps them. Vercel&apos;s
+            own terms and privacy notice apply.
           </p>
         </div>
       </section>
@@ -72,8 +71,8 @@ export default function PrivacyPage() {
           <article className="card">
             <h2 id="sharing-heading">Selling and sharing data</h2>
             <p>
-              This private preview has no feature that sells personal information.
-              It does not use an ad network or a tool that tracks visits. An affiliate
+              This site has no feature that sells personal information. It does
+              not use an ad network or a tool that tracks visits. An affiliate
               link can include a referral code that is sent to the website you open.
             </p>
           </article>
@@ -100,9 +99,8 @@ export default function PrivacyPage() {
         <div className="prose">
           <h2 id="requests-heading">Privacy questions and requests</h2>
           <p>
-            We will add and test an email address for privacy questions before
-            the site opens to the public. You cannot send a privacy request
-            through this preview yet. See the
+            This site does not currently offer an email address or form for
+            privacy questions. See the
             <Link className="text-link" href="/contact/"> contact page</Link> for
             the latest status.
           </p>

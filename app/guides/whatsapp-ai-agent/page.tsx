@@ -127,7 +127,7 @@ export default function WhatsappAiAgentGuidePage() {
         ]}
         eyebrow={
           <>
-            Connection guide / checked{" "}
+            Updated{" "}
             <time dateTime={page.lastModified}>
               {formatPageDate(page.lastModified)}
             </time>

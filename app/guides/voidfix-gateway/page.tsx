@@ -114,7 +114,7 @@ export default function VoidfixGatewayGuidePage() {
         ]}
         eyebrow={
           <>
-            Product explainer / checked{" "}
+            Updated{" "}
             <time dateTime={page.lastModified}>
               {formatPageDate(page.lastModified)}
             </time>
@@ -283,10 +283,9 @@ export default function VoidfixGatewayGuidePage() {
             Plan features can change, as can taxes and trial terms. Check the
             live checkout before buying. SMS users may also need phones and
             SIMs. Carrier plans, data and optional add-ons may cost extra.
-            VoidFix&apos;s current
-            terms describe monthly renewal until cancellation and say paid
-            subscription access is generally non-refundable. Local rights may
-            be different.
+            VoidFix&apos;s current terms say plans renew each month until you
+            cancel. They also say paid plans are usually not refundable. Local
+            law may give you more rights.
           </p>
           <PageNextStep
             href="#setup-guides"
@@ -319,8 +318,8 @@ export default function VoidfixGatewayGuidePage() {
                   does not mean there are no rules.
                 </li>
                 <li>
-                  A WhatsApp linked-device setup is not a zero-risk replacement
-                  for Meta&apos;s Business Platform.
+                  A linked-device setup can still fail or be limited. It is not
+                  the same as Meta&apos;s Business Platform.
                 </li>
                 <li>
                   Do not use either setup as the only way to send emergency or
@@ -434,7 +433,7 @@ export default function VoidfixGatewayGuidePage() {
 
         <section id="sources-and-limits" className="anchor-target">
           <p className="eyebrow">Sources and test limits</p>
-          <h2>Sources checked August 26, 2026.</h2>
+          <h2>What we checked—and what we did not test.</h2>
           <div className="method-panel source-ledger-panel">
             <ul>
               <li>

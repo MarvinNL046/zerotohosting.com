@@ -127,7 +127,7 @@ export default function HermesAgentWhatsappGuidePage() {
         ]}
         eyebrow={
           <>
-            Hermes connection guide / checked{" "}
+            Updated{" "}
             <time dateTime={page.lastModified}>
               {formatPageDate(page.lastModified)}
             </time>

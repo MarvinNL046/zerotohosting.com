@@ -54,7 +54,7 @@ export default function HostingTypesGuidePage() {
       <header className="guide-hero page-shell">
         <Breadcrumb items={[{ label: "Guides" }, { label: "Types of web hosting" }]} />
         <p className="eyebrow">
-          Hosting guide / updated{" "}
+          Updated{" "}
           <time dateTime={publicPageFrontmatter.hostingTypesGuide.lastModified}>
             {formatPageDate(publicPageFrontmatter.hostingTypesGuide.lastModified)}
           </time>

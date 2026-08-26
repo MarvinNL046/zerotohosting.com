@@ -42,7 +42,7 @@ const setupSteps = [
   },
   {
     title: "Check which buttons you see",
-    text: "VoidFix's guide starts with Add Account. The Scribe guide starts with Generate Customer Link. Follow the buttons shown in your account and ask VoidFix if neither appears.",
+    text: "VoidFix's guide starts with Add Account. The step-by-step guide starts with Generate Customer Link. Follow the buttons shown in your account and ask VoidFix if neither appears.",
   },
   {
     title: "Follow the buttons shown in your account",
@@ -126,7 +126,7 @@ export default function ConnectWhatsappToVoidfixGuidePage() {
         ]}
         eyebrow={
           <>
-            Setup guide / checked{" "}
+            Updated{" "}
             <time dateTime={page.lastModified}>
               {formatPageDate(page.lastModified)}
             </time>
@@ -239,7 +239,7 @@ export default function ConnectWhatsappToVoidfixGuidePage() {
           <div className="method-panel">
             <p>
               <strong>The two guides start differently.</strong> One shows Host
-              and Add Account. The Scribe guide shows Generate Customer Link and
+              and Add Account. The step-by-step guide shows Generate Customer Link and
               a customer page. Follow the labels in your current dashboard. Ask
               VoidFix if neither set of steps matches.
             </p>
@@ -263,7 +263,7 @@ export default function ConnectWhatsappToVoidfixGuidePage() {
               Read the current VoidFix device guide
             </ExternalSourceLink>
             <ExternalSourceLink href="https://scribehow.com/o/aPVt4GmYRV2kilMIKOBJFA/viewer/WhatsApp_Connection_or_VoidFix_Gateway__WtCxdum-S3WXSynJ22wUsg">
-              Read the VoidFix WhatsApp Scribe guide
+              Read the step-by-step VoidFix WhatsApp guide
             </ExternalSourceLink>
           </p>
         </section>
@@ -381,7 +381,7 @@ export default function ConnectWhatsappToVoidfixGuidePage() {
               </li>
               <li>
                 <ExternalSourceLink href="https://scribehow.com/o/aPVt4GmYRV2kilMIKOBJFA/viewer/WhatsApp_Connection_or_VoidFix_Gateway__WtCxdum-S3WXSynJ22wUsg">
-                  Supplied VoidFix WhatsApp Scribe walkthrough
+                  Step-by-step VoidFix WhatsApp guide
                 </ExternalSourceLink>
               </li>
               <li>

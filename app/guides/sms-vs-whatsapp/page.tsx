@@ -87,7 +87,7 @@ export default function SmsVsWhatsappGuidePage() {
         ]}
         eyebrow={
           <>
-            Messaging comparison / checked{" "}
+            Updated{" "}
             <time dateTime={page.lastModified}>
               {formatPageDate(page.lastModified)}
             </time>

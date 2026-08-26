@@ -111,7 +111,7 @@ export default function AiAgentHostingGuidePage() {
         breadcrumbs={[{ href: "/", label: "Home" }, { label: "AI agent hosting" }]}
         eyebrow={
           <>
-            AI agent hosting / updated{" "}
+            Updated{" "}
             <time dateTime={page.lastModified}>{formatPageDate(page.lastModified)}</time>
           </>
         }

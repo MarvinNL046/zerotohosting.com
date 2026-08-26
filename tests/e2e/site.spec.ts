@@ -12,7 +12,7 @@ const standardStaticAnswers = {
   evidence: "No proof that the hosting plan is too small",
   criticality:
     "A short outage would be annoying but would not cause serious harm",
-  compliance: "No special rules about laws, data location, or time online",
+  compliance: "No special rules for either one",
 } as const;
 
 test("home explains the product and links to the two core experiences", async ({ page }) => {

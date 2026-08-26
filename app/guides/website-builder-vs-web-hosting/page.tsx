@@ -140,7 +140,7 @@ export default function WebsiteBuilderVsHostingGuidePage() {
         breadcrumbs={[{ href: "/", label: "Home" }, { label: "Builder vs hosting" }]}
         eyebrow={
           <>
-            Beginner comparison / checked{" "}
+            Updated{" "}
             <time dateTime={page.lastModified}>{formatPageDate(page.lastModified)}</time>
           </>
         }

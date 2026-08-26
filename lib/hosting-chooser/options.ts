@@ -98,9 +98,9 @@ export const HOSTING_CRITICALITY_LABELS = {
 } satisfies Record<HostingCriticality, string>;
 
 export const COMPLIANCE_LABELS = {
-  standard: "No special rules about laws, data location, or time online",
+  standard: "No special rules for either one",
   "regulated-or-residency":
-    "Yes. Special rules affect where data must stay or how often the site must be online",
+    "Yes. A law, contract, or company rule sets one of these limits",
   unknown: "I am not sure yet",
 } satisfies Record<ComplianceRequirement, string>;
 

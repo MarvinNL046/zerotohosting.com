@@ -148,7 +148,7 @@ export default function OpenClawWhatsappGuidePage() {
         ]}
         eyebrow={
           <>
-            OpenClaw channel guide / checked{" "}
+            Updated{" "}
             <time dateTime={page.lastModified}>
               {formatPageDate(page.lastModified)}
             </time>

@@ -214,7 +214,7 @@ export default function FirstWebsiteHostingGuidePage() {
           ]}
         />
         <p className="eyebrow">
-          First website guide / checked{" "}
+          Updated{" "}
           <time
             dateTime={
               publicPageFrontmatter.firstWebsiteHostingGuide.lastModified

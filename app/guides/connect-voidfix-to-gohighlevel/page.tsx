@@ -122,7 +122,7 @@ export default function ConnectVoidfixToGohighlevelGuidePage() {
         ]}
         eyebrow={
           <>
-            Third-party connection guide / checked{" "}
+            Updated{" "}
             <time dateTime={page.lastModified}>
               {formatPageDate(page.lastModified)}
             </time>
@@ -377,7 +377,7 @@ export default function ConnectVoidfixToGohighlevelGuidePage() {
 
         <section id="sources-and-limits" className="anchor-target">
           <p className="eyebrow">Sources and test limits</p>
-          <h2>Sources checked August 26, 2026.</h2>
+          <h2>What we checked—and what we did not test.</h2>
           <div className="method-panel source-ledger-panel">
             <ul>
               <li>
