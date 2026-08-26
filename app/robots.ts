@@ -1,15 +1,25 @@
 import type { MetadataRoute } from "next";
+import { siteConfig } from "@/lib/site";
 
 export default function robots(): MetadataRoute.Robots {
-  return {
-    rules: [
-      {
+  const siteIsIndexable = process.env.SITE_INDEXABLE === "true";
+
+  if (!siteIsIndexable) {
+    return {
+      rules: {
         userAgent: "*",
-        allow: "/",
-        disallow: ["/api/", "/_next/", "/admin/"],
+        disallow: "/",
       },
-    ],
-    sitemap: "https://zerotohosting.com/sitemap.xml",
-    host: "https://zerotohosting.com",
+      host: siteConfig.url,
+    };
+  }
+
+  return {
+    rules: {
+      userAgent: "*",
+      allow: "/",
+    },
+    sitemap: `${siteConfig.url}/sitemap.xml`,
+    host: siteConfig.url,
   };
 }

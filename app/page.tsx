@@ -1,458 +1,335 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
-  CheckCircle2,
-  Star,
-  Zap,
-  Shield,
-  Headphones,
-  BarChart3,
-  Clock,
-  ExternalLink,
-  ChevronRight,
-  Award,
-  TrendingUp,
-  Globe,
+  Bot,
+  Calculator,
+  Check,
+  Compass,
+  FileSearch,
+  Gauge,
+  Layers3,
+  ShieldCheck,
+  Wrench,
 } from "lucide-react";
-import { hosts, getTopHosts } from "@/data/hosts";
-import HostingCard from "@/components/HostingCard";
-import FAQ from "@/components/FAQ";
-import Newsletter from "@/components/Newsletter";
+import { HomeJsonLd } from "@/components/json-ld";
+import { HostingStackVisual } from "@/components/hosting-stack-visual";
+import { createPageMetadata } from "@/lib/metadata";
+import { publicPageFrontmatter } from "@/lib/public-pages";
 
-export const metadata: Metadata = {
-  title: "Best Web Hosting Reviews 2025 — Zero To Hosting",
+export const metadata = createPageMetadata({
+  title: "Choose a web hosting type that may fit",
   description:
-    "Find the best web hosting for your needs. We've independently tested 50+ hosting providers for speed, uptime, support and value. Compare plans and get exclusive discounts.",
-};
+    "Not sure what hosting you need? Get a hosting type that may fit, or learn what you must decide first.",
+  path: publicPageFrontmatter.home.path,
+});
 
-const homepageFAQ = [
+const decisionAxes = [
   {
-    question: "What is the best web hosting for beginners in 2025?",
-    answer:
-      "For beginners, we recommend Hostinger as the #1 choice. It offers an incredibly user-friendly custom hPanel, affordable pricing starting at $2.99/month, free SSL, and 24/7 live chat support. The interface is clean and beginner-friendly, and you can have a WordPress site live in under 10 minutes.",
+    number: "01",
+    icon: Layers3,
+    title: "What your site runs on",
+    description:
+      "First choose how you will build the site: a site builder, WordPress, ready-made files, another website editor, or a custom app.",
+    prompt: "What does your site need to run?",
   },
   {
-    question: "How much does web hosting cost per month?",
-    answer:
-      "Web hosting costs vary from $2–$5/month for shared hosting (beginner-friendly, good for most sites), $15–$50/month for VPS hosting (more power and control), $25–$150+/month for managed WordPress hosting (hands-off, performance-focused), and $100+/month for dedicated servers (enterprise level). Most beginners start with shared hosting for $2–$5/month.",
+    number: "02",
+    icon: Wrench,
+    title: "Who cares for the server",
+    description:
+      "Choose whether your team or the hosting company will update, watch, back up, and fix the server.",
+    prompt: "Who will care for the server?",
   },
   {
-    question: "What's the difference between shared hosting and managed WordPress hosting?",
-    answer:
-      "Shared hosting puts your website on a server with many other websites, sharing resources. It's affordable and easy to use, but performance can vary. Managed WordPress hosting is optimized specifically for WordPress — faster caching, automatic updates, staging environments, and WordPress-expert support. It costs more but handles the technical side for you.",
-  },
-  {
-    question: "Do I need a domain name to get web hosting?",
-    answer:
-      "Yes, you need both a domain name and web hosting to get a website online. Many hosting providers include a free domain for the first year (Hostinger, Bluehost, GreenGeeks). You can also buy a domain separately from registrars like Namecheap or Google Domains.",
-  },
-  {
-    question: "How do you test and rate web hosting providers?",
-    answer:
-      "We test every hosting provider ourselves. We sign up as regular customers, install WordPress, run speed tests using GTmetrix and Pingdom, monitor uptime for 30+ days, test support via live chat and email, and evaluate the control panel for ease of use. We never accept payment for positive reviews — our ratings are based purely on real performance data.",
-  },
-  {
-    question: "What should I look for when choosing web hosting?",
-    answer:
-      "The 5 key factors are: (1) Speed — look for NVMe SSD storage and a built-in CDN, (2) Uptime — 99.9% minimum guarantee, (3) Support — 24/7 live chat is essential for beginners, (4) Price — beware of low intro prices with high renewal costs, (5) Features — free SSL, email hosting, and easy WordPress installation are must-haves.",
+    number: "03",
+    icon: Gauge,
+    title: "Signs you may need more power",
+    description:
+      "A slow page does not always mean you need a bigger plan. Find the cause before you pay for more.",
+    prompt: "What do your tests show?",
   },
 ];
 
-const trustStats = [
-  { value: "50+", label: "Hosts Tested" },
-  { value: "30", label: "Days Monitoring per Host" },
-  { value: "100+", label: "Speed Tests Run" },
-  { value: "5 Years", label: "Industry Experience" },
-];
+const routes = [
+  ["Hosting included with a site builder", "Your website builder already hosts the site, so you may not need a second hosting plan."],
+  ["Shared or managed web hosting", "These plans can leave most server work to the hosting company. Check the exact tasks in the plan."],
+  ["Managed WordPress hosting", "These plans may add WordPress help and tools. Check exactly what the plan includes."],
+  ["Static hosting", "The host sends ready-made site files without keeping a full server running."],
+  ["Managed app platform", "This can run a custom app while the service handles some server work. Check the exact split."],
+  ["VPS (a rented virtual server) or cloud server", "These plans give more server control. Check whether the plan includes server care or leaves it to your team."],
+] as const;
 
-const testingCriteria = [
+const tickerItems = [
+  "WHAT YOU RUN",
+  "WHO MANAGES IT",
+  "SIGNS YOU MAY NEED MORE POWER",
+  "A CLEAR RESULT",
+] as const;
+
+const faqs = [
   {
-    icon: Zap,
-    title: "Speed Testing",
-    description:
-      "We run 10+ speed tests per host using GTmetrix and Pingdom from multiple global locations, measuring TTFB, load time, and Core Web Vitals.",
-    color: "text-amber-500",
-    bg: "bg-amber-50",
+    question: "What type of hosting do I need for a new website?",
+    answer:
+      "Start with the tool you will use to build the site. A website builder may include hosting. WordPress needs hosting that can run WordPress. A static site can use simple static hosting. Then decide who will care for the server and how much power you need.",
   },
   {
-    icon: Shield,
-    title: "Uptime Monitoring",
-    description:
-      "We monitor uptime every 5 minutes for 30+ days using UptimeRobot, tracking any downtime events and how fast issues are resolved.",
-    color: "text-[#2563EB]",
-    bg: "bg-blue-50",
+    question: "Is shared hosting always the beginner option?",
+    answer:
+      "No. Shared hosting can work for a normal website that needs no special server access. A website builder or static host can also work when it meets every need.",
   },
   {
-    icon: Headphones,
-    title: "Support Testing",
-    description:
-      "We contact support via live chat, email and phone (where available) with technical questions to test response time and quality.",
-    color: "text-[#10B981]",
-    bg: "bg-emerald-50",
+    question: "Do I need a VPS (a virtual server) when my site feels slow?",
+    answer:
+      "Not yet. A page can be slow because of code, a database, outside scripts, large images, or visitor location. Test where the delay starts. Also check your host's limits before you take on a server that your team must manage.",
   },
   {
-    icon: BarChart3,
-    title: "Features & Value",
-    description:
-      "We evaluate what you get for your money — storage, bandwidth, email accounts, SSL, CDN, backups, and developer tools.",
-    color: "text-purple-500",
-    bg: "bg-purple-50",
+    question: "Does the chooser recommend providers or plans?",
+    answer:
+      "No. It suggests a hosting type or tells you what to decide first. It gives reasons and checks, but does not rank companies. Prices or ratings do not change its results. Affiliate payments do not change them either.",
   },
 ];
 
 export default function HomePage() {
-  const topHosts = getTopHosts(3);
-  const recentReviews = hosts.slice(3, 9);
-
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name: "Best Web Hosting Providers 2025",
-    description: "Top-rated web hosting providers reviewed and ranked",
-    itemListElement: topHosts.map((host, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      item: {
-        "@type": "Product",
-        name: host.name,
-        description: host.description,
-        url: `https://zerotohosting.com/reviews/${host.slug}`,
-        aggregateRating: {
-          "@type": "AggregateRating",
-          ratingValue: host.rating,
-          bestRating: 10,
-          worstRating: 0,
-          reviewCount: Math.floor(Math.random() * 200 + 50),
-        },
-      },
-    })),
-  };
-
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+    <main id="main-content">
+      <HomeJsonLd />
 
-      {/* Hero */}
-      <section className="gradient-hero relative overflow-hidden">
-        {/* Decorative elements */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-[#2563EB] opacity-10 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#10B981] opacity-5 rounded-full blur-3xl" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#2563EB] opacity-5 rounded-full blur-3xl" />
-          {/* Grid pattern */}
-          <div
-            className="absolute inset-0 opacity-[0.03]"
-            style={{
-              backgroundImage: "linear-gradient(rgba(255,255,255,.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.5) 1px, transparent 1px)",
-              backgroundSize: "48px 48px",
-            }}
-          />
-        </div>
-
-        <div className="container-max relative pt-16 pb-20 md:pt-24 md:pb-28">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="inline-flex items-center gap-2 bg-white/10 border border-white/10 rounded-full px-4 py-2 text-sm text-slate-300 mb-6">
-              <TrendingUp size={14} className="text-[#10B981]" />
-              Updated March 2025 — Based on real testing
-            </div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight">
-              Find Your Perfect{" "}
-              <span className="gradient-text">Web Host</span>
-              {" "}in 5 Minutes
-            </h1>
-
-            <p className="text-lg md:text-xl text-slate-300 mb-8 max-w-2xl mx-auto leading-relaxed">
-              We&apos;ve tested <strong className="text-white">50+ hosting providers</strong> for speed, uptime, support, and value — so you don&apos;t have to. From zero to online, your first website starts here.
+      <section className="home-hero">
+        <div className="hero-grid page-shell">
+          <div className="hero-copy">
+            <p className="eyebrow">Choose a hosting type before a company</p>
+            <h1>Not sure which web hosting you need?</h1>
+            <p className="hero-lede">
+              Answer simple questions about your website. We will show a hosting type
+              that may fit, or tell you what to decide first. We do not rank hosting
+              companies.
             </p>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-              <Link href="/best/beginners" className="btn-primary text-base px-8 py-4">
-                <Zap size={18} />
-                Find Best Host for Me
+            <div className="button-row">
+              <Link className="button button-primary" href="/tools/hosting-type-chooser/">
+                Help me choose hosting <ArrowRight size={17} aria-hidden="true" />
               </Link>
-              <Link href="/compare" className="btn-secondary text-base px-8 py-4 border-white/30 text-white hover:bg-white hover:text-[#0F172A]">
-                Compare Providers
-                <ArrowRight size={16} />
+              <Link className="button button-quiet" href="/guides/types-of-web-hosting/">
+                Learn the hosting types
               </Link>
             </div>
+            <ul className="trust-list" aria-label="What this tool does">
+              <li><Check size={15} aria-hidden="true" /> No company rankings</li>
+              <li><Check size={15} aria-hidden="true" /> Affiliate links are clearly labeled</li>
+              <li><Check size={15} aria-hidden="true" /> “Not sure” stays “not sure”</li>
+            </ul>
+          </div>
+          <HostingStackVisual />
+        </div>
+      </section>
 
-            {/* Trust indicators */}
-            <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6 text-sm text-slate-400">
-              {[
-                "No paid reviews",
-                "Real speed tests",
-                "Updated monthly",
-                "Beginner-friendly",
-              ].map((item) => (
-                <span key={item} className="flex items-center gap-1.5">
-                  <CheckCircle2 size={14} className="text-[#10B981]" />
-                  {item}
+      <div className="ticker" aria-hidden="true">
+        <div className="ticker-track">
+          {[0, 1].map((copy) => (
+            <div className="ticker-group" key={copy}>
+              {tickerItems.map((item) => (
+                <span className="ticker-item" key={item}>
+                  <span>{item}</span>
+                  <i>•</i>
                 </span>
               ))}
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Trust Bar */}
-      <div className="bg-white border-b border-slate-100">
-        <div className="container-max py-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            {trustStats.map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-2xl md:text-3xl font-black text-[#2563EB]">{stat.value}</div>
-                <div className="text-sm text-slate-500 mt-0.5">{stat.label}</div>
-              </div>
-            ))}
-          </div>
+          ))}
         </div>
       </div>
 
-      {/* Top 3 Picks */}
-      <section className="section-padding bg-[#F8FAFC]">
-        <div className="container-max">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 text-sm font-semibold text-[#2563EB] bg-blue-50 px-3 py-1.5 rounded-full mb-4">
-              <Award size={14} />
-              Editor&apos;s Top Picks — March 2025
-            </div>
-            <h2 className="text-3xl md:text-4xl font-black text-[#0F172A] mb-4">
-              Our #1 Recommended Web Hosts
-            </h2>
-            <p className="text-slate-500 max-w-xl mx-auto">
-              Ranked by speed, uptime, support and overall value. These are the hosting providers we&apos;d use ourselves.
-            </p>
+      <section className="content-section page-shell decision-section" aria-labelledby="decision-heading">
+        <div className="section-heading split-heading">
+          <div>
+            <p className="eyebrow">Start with your website</p>
+            <h2 id="decision-heading">Three things decide your hosting type.</h2>
           </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {topHosts.map((host, i) => (
-              <HostingCard key={host.slug} host={host} rank={i + 1} variant="featured" />
-            ))}
-          </div>
-
-          <div className="text-center mt-8">
-            <Link
-              href="/reviews"
-              className="inline-flex items-center gap-2 text-[#2563EB] font-semibold hover:underline"
-            >
-              View all 10 hosting reviews
-              <ArrowRight size={16} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* How We Test */}
-      <section className="section-padding bg-white">
-        <div className="container-max">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-2 text-sm font-semibold text-[#10B981] bg-emerald-50 px-3 py-1.5 rounded-full mb-4">
-              <Shield size={14} />
-              Our Testing Process
-            </div>
-            <h2 className="text-3xl md:text-4xl font-black text-[#0F172A] mb-4">
-              How We Test Web Hosting
-            </h2>
-            <p className="text-slate-500 max-w-xl mx-auto">
-              Every host is tested independently. We sign up as real customers and run rigorous tests before publishing any review.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {testingCriteria.map((item) => {
-              const Icon = item.icon;
-              return (
-                <div key={item.title} className="text-center">
-                  <div className={`w-14 h-14 ${item.bg} rounded-2xl flex items-center justify-center mx-auto mb-4`}>
-                    <Icon size={24} className={item.color} />
-                  </div>
-                  <h3 className="font-bold text-[#0F172A] mb-2">{item.title}</h3>
-                  <p className="text-sm text-slate-500 leading-relaxed">{item.description}</p>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="text-center mt-10">
-            <Link href="/about" className="btn-secondary">
-              Learn About Our Testing Methodology
-              <ArrowRight size={16} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Comparison Table Preview */}
-      <section className="section-padding bg-[#F8FAFC]">
-        <div className="container-max">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-black text-[#0F172A] mb-4">
-              Quick Comparison
-            </h2>
-            <p className="text-slate-500">
-              How do the top hosts stack up? Here&apos;s a snapshot.
-            </p>
-          </div>
-
-          {/* Simplified comparison table */}
-          <div className="overflow-x-auto rounded-2xl border border-slate-200 shadow-sm bg-white">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-[#0F172A]">
-                  <th className="text-left px-6 py-4 text-slate-400 font-semibold">Host</th>
-                  <th className="px-4 py-4 text-center text-slate-400 font-semibold">Rating</th>
-                  <th className="px-4 py-4 text-center text-slate-400 font-semibold">Price/mo</th>
-                  <th className="px-4 py-4 text-center text-slate-400 font-semibold">Speed</th>
-                  <th className="px-4 py-4 text-center text-slate-400 font-semibold">Uptime</th>
-                  <th className="px-4 py-4 text-center text-slate-400 font-semibold">Best For</th>
-                  <th className="px-4 py-4 text-center text-slate-400 font-semibold"></th>
-                </tr>
-              </thead>
-              <tbody>
-                {hosts.slice(0, 6).map((host, i) => (
-                  <tr key={host.slug} className={`border-t border-slate-100 ${i % 2 === 0 ? "bg-white" : "bg-slate-50/50"} hover:bg-blue-50/30 transition-colors`}>
-                    <td className="px-6 py-4">
-                      <div className="font-bold text-[#0F172A]">{host.name}</div>
-                      <div className="text-xs text-slate-500 mt-0.5">{host.tagline}</div>
-                    </td>
-                    <td className="px-4 py-4 text-center">
-                      <span className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#10B981]/10 text-[#10B981] font-black">
-                        {host.rating.toFixed(1)}
-                      </span>
-                    </td>
-                    <td className="px-4 py-4 text-center font-bold text-[#2563EB]">
-                      ${host.startingPrice}
-                    </td>
-                    <td className="px-4 py-4 text-center text-slate-600">{host.speedScore}</td>
-                    <td className="px-4 py-4 text-center text-slate-600">{host.uptimeGuarantee}</td>
-                    <td className="px-4 py-4 text-center">
-                      <span className="tag text-xs">{host.bestFor[0]}</span>
-                    </td>
-                    <td className="px-4 py-4 text-center">
-                      <Link
-                        href={`/reviews/${host.slug}`}
-                        className="text-xs font-semibold text-[#2563EB] hover:underline whitespace-nowrap"
-                      >
-                        Review →
-                      </Link>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-
-          <div className="text-center mt-6">
-            <Link href="/compare" className="btn-primary">
-              <BarChart3 size={16} />
-              Full Comparison Tool
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Best For categories */}
-      <section className="section-padding bg-white">
-        <div className="container-max">
-          <div className="text-center mb-10">
-            <h2 className="text-3xl md:text-4xl font-black text-[#0F172A] mb-4">
-              Find the Best Host for Your Needs
-            </h2>
-            <p className="text-slate-500">
-              Different websites need different hosting. We&apos;ve curated the best options for every use case.
-            </p>
-          </div>
-
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {[
-              { icon: "🐣", slug: "beginners", label: "Best for Beginners", desc: "Easy setup, great support, affordable" },
-              { icon: "🔷", slug: "wordpress", label: "Best for WordPress", desc: "Optimized WP performance & tools" },
-              { icon: "🛒", slug: "ecommerce", label: "Best for eCommerce", desc: "WooCommerce & online store hosting" },
-              { icon: "💰", slug: "budget", label: "Best Budget Hosting", desc: "Under $5/month, no compromises" },
-              { icon: "🏢", slug: "small-business", label: "Best for Small Business", desc: "Professional, reliable, scalable" },
-              { icon: "⚡", slug: "vps", label: "Best VPS Hosting", desc: "More power and root access" },
-            ].map((cat) => (
-              <Link
-                key={cat.slug}
-                href={`/best/${cat.slug}`}
-                className="flex items-start gap-4 p-5 bg-white border border-slate-200 rounded-xl hover:border-[#2563EB] hover:shadow-md transition-all group"
-              >
-                <span className="text-2xl">{cat.icon}</span>
-                <div className="flex-1 min-w-0">
-                  <div className="font-bold text-[#0F172A] group-hover:text-[#2563EB] transition-colors">
-                    {cat.label}
-                  </div>
-                  <div className="text-sm text-slate-500 mt-0.5">{cat.desc}</div>
-                </div>
-                <ChevronRight size={16} className="text-slate-400 group-hover:text-[#2563EB] mt-0.5 shrink-0 transition-colors" />
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Latest Reviews */}
-      <section className="section-padding bg-[#F8FAFC]">
-        <div className="container-max">
-          <div className="flex items-center justify-between mb-10">
-            <div>
-              <h2 className="text-3xl md:text-4xl font-black text-[#0F172A]">
-                Latest Hosting Reviews
-              </h2>
-              <p className="text-slate-500 mt-2">In-depth, real-world tested reviews</p>
-            </div>
-            <Link href="/reviews" className="hidden md:flex items-center gap-2 text-[#2563EB] font-semibold hover:underline">
-              All Reviews <ArrowRight size={16} />
-            </Link>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {recentReviews.map((host) => (
-              <HostingCard key={host.slug} host={host} />
-            ))}
-          </div>
-
-          <div className="text-center mt-8 md:hidden">
-            <Link href="/reviews" className="btn-secondary">
-              All Reviews <ArrowRight size={16} />
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Newsletter */}
-      <Newsletter />
-
-      {/* FAQ */}
-      <div className="bg-[#F8FAFC]">
-        <FAQ items={homepageFAQ} title="Web Hosting FAQ for Beginners" />
-      </div>
-
-      {/* Final CTA */}
-      <section className="section-padding bg-gradient-to-br from-[#0F172A] to-[#1E3A5F]">
-        <div className="container-max text-center max-w-2xl mx-auto">
-          <Globe size={48} className="text-[#2563EB] mx-auto mb-6" />
-          <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
-            Ready to get your website online?
-          </h2>
-          <p className="text-slate-300 mb-8 text-lg">
-            Start with our beginner guide and get your first website live in under an hour.
+          <p>
+            Hosting plan names can be confusing. These three simple questions help
+            you narrow down the choice.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/best/beginners" className="btn-primary text-base px-8 py-4">
-              <Zap size={18} /> Find Best Host for Me
+        </div>
+        <div className="axis-grid">
+          {decisionAxes.map((axis) => {
+            const Icon = axis.icon;
+            return (
+              <article className="axis-card" key={axis.number}>
+                <div className="axis-card-top">
+                  <span>{axis.number}</span>
+                  <Icon size={22} aria-hidden="true" />
+                </div>
+                <h3>{axis.title}</h3>
+                <p>{axis.description}</p>
+                <small>{axis.prompt}</small>
+              </article>
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="tool-showcase" aria-labelledby="tool-heading">
+        <div className="page-shell tool-showcase-grid">
+          <div className="tool-copy">
+            <p className="eyebrow light-eyebrow">Free decision tool</p>
+            <h2 id="tool-heading">Answer eight questions. Get a clear starting point.</h2>
+            <p>
+              You do not need an account. We do not ask you to guess your traffic or
+              budget. We use facts that can change the type of hosting you need.
+            </p>
+            <ul className="check-list light-list">
+              <li><Check size={17} aria-hidden="true" /> A hosting type or clear next step</li>
+              <li><Check size={17} aria-hidden="true" /> Simple reasons and checks</li>
+              <li><Check size={17} aria-hidden="true" /> A backup option and signs to check again</li>
+            </ul>
+            <Link className="button button-accent" href="/tools/hosting-type-chooser/">
+              Start the chooser <ArrowRight size={17} aria-hidden="true" />
             </Link>
-            <Link href="/reviews" className="btn-secondary border-white/30 text-white hover:bg-white hover:text-[#0F172A] text-base px-8 py-4">
-              Browse All Reviews
-            </Link>
+          </div>
+          <div className="tool-terminal" role="group" aria-label="Example result from the tool">
+            <div className="terminal-header">
+              <span>HOSTING TYPE PREVIEW</span>
+              <span className="status-dot">ready</span>
+            </div>
+            <div className="terminal-body">
+              <p className="terminal-label">Example only</p>
+              <h3>Static hosting</h3>
+              <p>
+                This site uses ready-made files. It does not need a program that
+                stays running on a server.
+              </p>
+              <div className="terminal-rule" />
+              <dl>
+                <div><dt>Server care</dt><dd>Handled by the hosting company</dd></div>
+                <div><dt>More power</dt><dd>Only after tests show a need</dd></div>
+                <div><dt>How sure?</dt><dd><span className="confidence-pill">High</span></dd></div>
+              </dl>
+            </div>
           </div>
         </div>
       </section>
-    </>
+
+      <section className="content-section page-shell" aria-labelledby="routes-heading">
+        <div className="section-heading split-heading">
+          <div>
+            <p className="eyebrow">Common hosting choices</p>
+            <h2 id="routes-heading">Six choices for different needs.</h2>
+          </div>
+          <Link className="text-link" href="/guides/types-of-web-hosting/">
+            Learn about every type <ArrowRight size={15} aria-hidden="true" />
+          </Link>
+        </div>
+        <div className="route-list">
+          {routes.map(([title, description], index) => (
+            <article key={title}>
+              <span>{String(index + 1).padStart(2, "0")}</span>
+              <h3>{title}</h3>
+              <p>{description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section className="content-section page-shell topic-hub-section" aria-labelledby="topic-hubs-heading">
+        <div className="section-heading split-heading">
+          <div>
+            <p className="eyebrow">Go one level deeper</p>
+            <h2 id="topic-hubs-heading">Costs for websites. Hosting for AI agents.</h2>
+          </div>
+          <p>
+            Use the website path when you are building pages. Use the agent path
+            when software must stay running and do work.
+          </p>
+        </div>
+        <div className="topic-hub-grid">
+          <article className="topic-hub-card">
+            <span className="topic-hub-icon"><Calculator size={24} aria-hidden="true" /></span>
+            <p className="eyebrow">Website costs</p>
+            <h3>See the full bill before checkout.</h3>
+            <p>Separate the first year from renewal. Then add your own numbers.</p>
+            <Link className="topic-hub-primary" href="/guides/how-much-does-web-hosting-cost/">
+              Start with the cost guide <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+            <p className="topic-hub-more">Then explore</p>
+            <ul aria-label="More website cost pages">
+              <li><Link href="/guides/website-builder-vs-web-hosting/">Website builder vs web hosting</Link></li>
+              <li><Link href="/tools/website-cost-calculator/">Website cost calculator</Link></li>
+            </ul>
+          </article>
+          <article className="topic-hub-card topic-hub-card-dark">
+            <span className="topic-hub-icon"><Bot size={24} aria-hidden="true" /></span>
+            <p className="eyebrow light-eyebrow">AI agent hosting</p>
+            <h3>Learn where your AI agent can run.</h3>
+            <p>Then compare what the hosting company does and what you must do.</p>
+            <Link className="topic-hub-primary" href="/guides/ai-agent-hosting/">
+              Start with the hosting guide <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+            <p className="topic-hub-more">Then explore</p>
+            <ul aria-label="More AI agent hosting pages">
+              <li><Link href="/guides/hermes-agent-vs-openclaw/">Hermes Agent vs OpenClaw</Link></li>
+              <li><Link href="/guides/best-vps-for-openclaw/">Best VPS for OpenClaw</Link></li>
+              <li><Link href="/guides/whatsapp-ai-agent/">Connect an AI agent to WhatsApp</Link></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section className="evidence-band" aria-labelledby="evidence-heading">
+        <div className="page-shell evidence-grid">
+          <div>
+            <p className="eyebrow">How we keep the advice honest</p>
+            <h2 id="evidence-heading">We show our reasons and limits.</h2>
+          </div>
+          <div className="evidence-points">
+            <article>
+              <FileSearch size={22} aria-hidden="true" />
+              <h3>Sources for facts that can change</h3>
+              <p>We use the company’s current guides or terms and show when we checked them.</p>
+            </article>
+            <article>
+              <ShieldCheck size={22} aria-hidden="true" />
+              <h3>We stop when facts are missing</h3>
+              <p>If key facts are missing or your needs are complex, we tell you to get more help.</p>
+            </article>
+            <article>
+              <Compass size={22} aria-hidden="true" />
+              <h3>We tell you when to check again</h3>
+              <p>Every result tells you when to check your choice again.</p>
+            </article>
+          </div>
+          <Link className="button button-quiet" href="/methodology/">
+            See how the tool works <ArrowRight size={17} aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+
+      <section className="content-section page-shell faq-section" aria-labelledby="faq-heading">
+        <div className="section-heading split-heading">
+          <div>
+            <p className="eyebrow">Straight answers</p>
+            <h2 id="faq-heading">Common hosting questions.</h2>
+          </div>
+          <p>Start with a short answer. Read the guide when you want more detail.</p>
+        </div>
+        <div className="faq-list">
+          {faqs.map((faq) => (
+            <details key={faq.question}>
+              <summary>{faq.question}<span aria-hidden="true">+</span></summary>
+              <p>{faq.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section className="final-cta">
+        <div className="page-shell final-cta-inner">
+          <div>
+            <p className="eyebrow light-eyebrow">Ready when you are</p>
+            <h2>Find a good place to start.</h2>
+          </div>
+          <Link className="button button-accent" href="/tools/hosting-type-chooser/">
+            Help me choose hosting <ArrowRight size={17} aria-hidden="true" />
+          </Link>
+        </div>
+      </section>
+    </main>
   );
 }
