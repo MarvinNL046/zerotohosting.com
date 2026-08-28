@@ -10,7 +10,10 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "indexnow": "node scripts/indexnow-submit.mjs --force",
+    "indexnow:check": "node scripts/indexnow-submit.mjs --dry-run",
+    "postbuild": "node scripts/indexnow-submit.mjs --vercel-production"
   },
   "keywords": [],
   "author": "",
