@@ -18,9 +18,9 @@ import sitegroundPlans from "@/public/images/guides/best-hosting-for-beginners/s
 const chooserPath = "/tools/hosting-type-chooser/";
 
 export const metadata = createPageMetadata({
-  title: "Best hosting type for a first website",
+  title: "Best web hosting for beginners: 4 choices",
   description:
-    "Find the best hosting type for your first website. Match the plan to a site builder, WordPress, static files, or a custom app before comparing companies.",
+    "Find the best web hosting for beginners. Match the plan to a site builder, WordPress, static files, or a custom app before comparing companies.",
   path: publicPageFrontmatter.firstWebsiteHostingGuide.path,
 });
 
@@ -225,7 +225,7 @@ export default function FirstWebsiteHostingGuidePage() {
             )}
           </time>
         </p>
-        <h1>What is the best hosting type for a first website?</h1>
+        <h1>What is the best web hosting for beginners?</h1>
         <p className="lede">
           The right starting type follows the way you plan to build and who will
           manage the server. A hosted website builder already includes hosting.
@@ -310,6 +310,17 @@ export default function FirstWebsiteHostingGuidePage() {
                 href="/guides/types-of-web-hosting/"
               >
                 Read the full hosting-type guide
+                <ArrowRight size={16} aria-hidden="true" />
+              </Link>
+            </p>
+            <p className="supporting-link-row">
+              <span>Guides for a specific job:</span>
+              <Link className="text-link" href="/guides/best-web-hosting-for-small-business/">
+                Small-business hosting
+                <ArrowRight size={16} aria-hidden="true" />
+              </Link>
+              <Link className="text-link" href="/guides/best-web-hosting-for-artists/">
+                Artist portfolio hosting
                 <ArrowRight size={16} aria-hidden="true" />
               </Link>
             </p>

@@ -228,6 +228,34 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="content-section page-shell" aria-labelledby="best-by-use-heading">
+        <div className="section-heading split-heading">
+          <div>
+            <p className="eyebrow">Best hosting by job</p>
+            <h2 id="best-by-use-heading">Start with what the website must do.</h2>
+          </div>
+          <p>These guides turn a “best hosting” search into a short list of needs, work, and checks.</p>
+        </div>
+        <div className="topic-hub-grid">
+          <article className="topic-hub-card">
+            <p className="eyebrow">Small business</p>
+            <h3>Choose between a builder, WordPress, static hosting, and a store.</h3>
+            <p>Match the service to pages, leads, bookings, products, staff, and recovery.</p>
+            <Link className="topic-hub-primary" href="/guides/best-web-hosting-for-small-business/">
+              Best web hosting for small business <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+          </article>
+          <article className="topic-hub-card">
+            <p className="eyebrow">Artist portfolio</p>
+            <h3>Show your work without turning the website into a server project.</h3>
+            <p>Compare Adobe Portfolio, hosted builders, WordPress, and static hosting.</p>
+            <Link className="topic-hub-primary" href="/guides/best-web-hosting-for-artists/">
+              Best web hosting for artists <ArrowRight size={16} aria-hidden="true" />
+            </Link>
+          </article>
+        </div>
+      </section>
+
       <section className="content-section page-shell topic-hub-section" aria-labelledby="topic-hubs-heading">
         <div className="section-heading split-heading">
           <div>
@@ -265,7 +293,9 @@ export default function HomePage() {
             <p className="topic-hub-more">Then explore</p>
             <ul aria-label="More AI agent hosting pages">
               <li><Link href="/guides/hermes-agent-vs-openclaw/">Hermes Agent vs OpenClaw</Link></li>
-              <li><Link href="/guides/best-vps-for-openclaw/">Best VPS for OpenClaw</Link></li>
+              <li><Link href="/guides/best-vps-for-openclaw/">Best OpenClaw hosting</Link></li>
+              <li><Link href="/guides/best-vps-for-hermes-agent/">Best VPS for Hermes Agent</Link></li>
+              <li><Link href="/guides/best-n8n-hosting/">Best n8n hosting</Link></li>
               <li><Link href="/guides/whatsapp-ai-agent/">Connect an AI agent to WhatsApp</Link></li>
             </ul>
           </article>

@@ -14,6 +14,8 @@ import { formatPageDate, publicPageFrontmatter } from "@/lib/public-pages";
 
 const comparisonPath = "/guides/hermes-agent-vs-openclaw/";
 const openClawVpsPath = "/guides/best-vps-for-openclaw/";
+const hermesVpsPath = "/guides/best-vps-for-hermes-agent/";
+const n8nHostingPath = "/guides/best-n8n-hosting/";
 const whatsappAiAgentPath = "/guides/whatsapp-ai-agent/";
 
 export const metadata = createPageMetadata({
@@ -260,8 +262,16 @@ export default function AiAgentHostingGuidePage() {
               <Link className="text-link" href={comparisonPath}>
                 Compare Hermes and OpenClaw <ArrowRight size={15} aria-hidden="true" />
               </Link>
+              <Link className="text-link" href={hermesVpsPath}>
+                Check a VPS for Hermes Agent <ArrowRight size={15} aria-hidden="true" />
+              </Link>
             </article>
           </div>
+          <PageNextStep
+            href={n8nHostingPath}
+            label="Compare n8n Cloud, managed hosting, and a Docker VPS"
+            prefix="Also in this cluster"
+          />
         </section>
 
         <section id="server-power" className="anchor-target">

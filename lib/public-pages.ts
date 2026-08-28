@@ -78,7 +78,7 @@ function definePublicPage<const T extends PublicPageFrontmatter>(
 export const publicPageFrontmatter = {
   home: definePublicPage({
     path: "/",
-    lastModified: "2026-08-26",
+    lastModified: "2026-08-28",
     changeFrequency: "weekly",
     priority: 1,
   }),
@@ -96,9 +96,21 @@ export const publicPageFrontmatter = {
   }),
   firstWebsiteHostingGuide: definePublicPage({
     path: "/guides/best-hosting-type-for-a-first-website/",
-    lastModified: "2026-08-26",
+    lastModified: "2026-08-28",
     changeFrequency: "monthly",
     priority: 0.7,
+  }),
+  smallBusinessHostingGuide: definePublicPage({
+    path: "/guides/best-web-hosting-for-small-business/",
+    lastModified: "2026-08-28",
+    changeFrequency: "monthly",
+    priority: 0.74,
+  }),
+  artistHostingGuide: definePublicPage({
+    path: "/guides/best-web-hosting-for-artists/",
+    lastModified: "2026-08-28",
+    changeFrequency: "monthly",
+    priority: 0.68,
   }),
   webHostingCostGuide: definePublicPage({
     path: "/guides/how-much-does-web-hosting-cost/",
@@ -120,7 +132,7 @@ export const publicPageFrontmatter = {
   }),
   aiAgentHostingGuide: definePublicPage({
     path: "/guides/ai-agent-hosting/",
-    lastModified: "2026-08-26",
+    lastModified: "2026-08-28",
     changeFrequency: "monthly",
     priority: 0.8,
   }),
@@ -132,9 +144,21 @@ export const publicPageFrontmatter = {
   }),
   bestVpsForOpenClawGuide: definePublicPage({
     path: "/guides/best-vps-for-openclaw/",
-    lastModified: "2026-08-26",
+    lastModified: "2026-08-28",
+    changeFrequency: "monthly",
+    priority: 0.74,
+  }),
+  bestVpsForHermesGuide: definePublicPage({
+    path: "/guides/best-vps-for-hermes-agent/",
+    lastModified: "2026-08-28",
     changeFrequency: "monthly",
     priority: 0.7,
+  }),
+  bestN8nHostingGuide: definePublicPage({
+    path: "/guides/best-n8n-hosting/",
+    lastModified: "2026-08-28",
+    changeFrequency: "monthly",
+    priority: 0.72,
   }),
   whatsappAiAgentGuide: definePublicPage({
     path: "/guides/whatsapp-ai-agent/",

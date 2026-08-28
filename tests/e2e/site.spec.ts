@@ -183,14 +183,19 @@ test("guide anchors exist and retired commercial routes return not found", async
   expect(await robots.text()).toContain("Disallow: /");
 });
 
-test("the two new topic clusters render their six entry pages", async ({ page }) => {
+test("the website and AI hosting clusters render their researched entry pages", async ({ page }) => {
   const routes = [
     ["/guides/how-much-does-web-hosting-cost/", "How much does web hosting cost?"],
     ["/guides/website-builder-vs-web-hosting/", "Website builder vs web hosting"],
     ["/tools/website-cost-calculator/", "Website cost calculator"],
+    ["/guides/best-hosting-type-for-a-first-website/", "What is the best web hosting for beginners?"],
+    ["/guides/best-web-hosting-for-small-business/", "What is the best web hosting for a small business?"],
+    ["/guides/best-web-hosting-for-artists/", "What is the best web hosting for artists?"],
     ["/guides/hermes-agent-vs-openclaw/", "Hermes Agent vs OpenClaw: which setup fits you?"],
     ["/guides/ai-agent-hosting/", "AI agent hosting, explained simply"],
-    ["/guides/best-vps-for-openclaw/", "What is the best VPS for OpenClaw?"],
+    ["/guides/best-vps-for-openclaw/", "What is the best OpenClaw hosting setup?"],
+    ["/guides/best-vps-for-hermes-agent/", "What is the best VPS for Hermes Agent?"],
+    ["/guides/best-n8n-hosting/", "What is the best n8n hosting?"],
   ] as const;
 
   for (const [path, heading] of routes) {
@@ -306,11 +311,11 @@ test("first-website guide keeps provider screenshots dated, named, and subordina
   await expect(
     page.getByRole("heading", {
       level: 1,
-      name: "What is the best hosting type for a first website?",
+      name: "What is the best web hosting for beginners?",
     }),
   ).toBeVisible();
-  await expect(page.locator("time[datetime='2026-08-26']").first()).toHaveText(
-    "August 26, 2026",
+  await expect(page.locator("time[datetime='2026-08-28']").first()).toHaveText(
+    "August 28, 2026",
   );
   await expect(
     page.getByRole("link", { name: "Match my site to a hosting type" }).first(),
