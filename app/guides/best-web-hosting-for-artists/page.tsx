@@ -9,8 +9,15 @@ import {
   PageNextStep,
 } from "@/components/editorial-guide";
 import { BreadcrumbJsonLd } from "@/components/json-ld";
+import {
+  ProviderProofList,
+  type ProviderProof,
+} from "@/components/provider-proof-list";
 import { createPageMetadata } from "@/lib/metadata";
 import { formatPageDate, publicPageFrontmatter } from "@/lib/public-pages";
+import adobePortfolio from "@/public/images/guides/provider-choices/adobe-portfolio-2026-08-28.png";
+import squarespacePortfolio from "@/public/images/guides/provider-choices/squarespace-portfolio-guide-2026-08-28.png";
+import wixPhotographerTools from "@/public/images/guides/provider-choices/wix-photographer-tools-2026-08-28.png";
 
 const firstWebsitePath = "/guides/best-hosting-type-for-a-first-website/";
 
@@ -25,12 +32,58 @@ const toc = [
   ["short-answer", "Short answer"],
   ["artist-jobs", "What the site must do"],
   ["four-routes", "Four routes"],
+  ["provider-examples", "Provider examples"],
   ["image-checks", "Image checks"],
   ["selling-art", "Selling art"],
   ["decision-table", "Decision table"],
   ["sources-and-limits", "Sources and limits"],
   ["frequently-asked-questions", "FAQ"],
 ] as const;
+
+const providerExamples: readonly ProviderProof[] = [
+  {
+    name: "Adobe Portfolio",
+    image: adobePortfolio,
+    alt: "Adobe Portfolio knowledge-base page describing its portfolio builder, Creative Cloud access, Lightroom and Behance connections, and private sites.",
+    caption:
+      "Official Adobe Portfolio guide captured August 28, 2026. It shows documented tools, not our image-quality or support test.",
+    observations: [
+      "Adobe says an eligible paid Creative Cloud plan includes Portfolio.",
+      "The guide lists images, video, Lightroom, Behance, and private pages.",
+      "Check what stays online if you change or cancel the Creative Cloud plan.",
+    ],
+    href: "https://portfolio.adobe.com/",
+    ctaLabel: "See Adobe Portfolio",
+  },
+  {
+    name: "Squarespace portfolios",
+    image: squarespacePortfolio,
+    alt: "Squarespace Help Center page titled Building a portfolio site with sections for showing work, client access, leads, and search engines.",
+    caption:
+      "Official Squarespace portfolio guide captured August 28, 2026. The page can change, so check the current features and plan before paying.",
+    observations: [
+      "The guide covers art, design, writing, and photographer portfolios.",
+      "It includes sections for showing work, private client access, and leads.",
+      "Check gallery limits, forms, selling tools, exports, and the renewal price.",
+    ],
+    href: "https://www.squarespace.com/templates",
+    ctaLabel: "Browse Squarespace templates",
+  },
+  {
+    name: "Wix portfolio tools",
+    image: wixPhotographerTools,
+    alt: "Wix Help Center page about recommended apps for photographers, including Wix Pro Gallery and Wix Portfolio.",
+    caption:
+      "Official Wix photographer-app guide captured August 28, 2026. It confirms gallery tools, not speed, sales, or image quality.",
+    observations: [
+      "Wix documents Pro Gallery and Portfolio tools for showing creative work.",
+      "The page mentions galleries, collections, media, and ways to reach visitors.",
+      "Check plan costs, app costs, image limits, exports, and private-page options.",
+    ],
+    href: "https://www.wix.com/portfolio-website",
+    ctaLabel: "See Wix portfolio websites",
+  },
+];
 
 const routes = [
   {
@@ -182,6 +235,18 @@ export default function BestWebHostingForArtistsPage() {
               </article>
             ))}
           </div>
+        </section>
+
+        <section id="provider-examples" className="anchor-target">
+          <p className="eyebrow">See the real portfolio tools</p>
+          <h2>Three official pages show what artists can build.</h2>
+          <p>
+            Adobe Portfolio may fit people who already pay for Creative Cloud.
+            Squarespace and Wix are all-in-one builders with portfolio tools.
+            These examples are not a speed ranking. Use them to compare the work
+            you can show, how you update it, and what happens if you leave.
+          </p>
+          <ProviderProofList providers={providerExamples} />
         </section>
 
         <section id="image-checks" className="anchor-target">

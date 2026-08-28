@@ -9,8 +9,15 @@ import {
   PageNextStep,
 } from "@/components/editorial-guide";
 import { BreadcrumbJsonLd } from "@/components/json-ld";
+import {
+  ProviderProofList,
+  type ProviderProof,
+} from "@/components/provider-proof-list";
 import { createPageMetadata } from "@/lib/metadata";
 import { formatPageDate, publicPageFrontmatter } from "@/lib/public-pages";
+import shopifyOnlineStore from "@/public/images/guides/provider-choices/shopify-online-store-2026-08-28.png";
+import wixSiteHosting from "@/public/images/guides/provider-choices/wix-site-hosting-2026-08-28.png";
+import sitegroundPlans from "@/public/images/guides/best-hosting-for-beginners/siteground-plans-2026-08-25.jpg";
 
 const chooserPath = "/tools/hosting-type-chooser/";
 const costPath = "/guides/how-much-does-web-hosting-cost/";
@@ -26,12 +33,58 @@ const toc = [
   ["short-answer", "Short answer"],
   ["business-needs", "What your business needs"],
   ["four-routes", "Four hosting routes"],
+  ["provider-examples", "Provider examples"],
   ["decision-table", "Decision table"],
   ["buying-checks", "Buying checks"],
   ["moving-later", "Moving later"],
   ["sources-and-limits", "Sources and limits"],
   ["frequently-asked-questions", "FAQ"],
 ] as const;
+
+const providerExamples: readonly ProviderProof[] = [
+  {
+    name: "Wix website hosting",
+    image: wixSiteHosting,
+    alt: "Wix Help Center page explaining that hosting is included with a Wix website and that a paid plan is needed for a custom domain.",
+    caption:
+      "Official Wix hosting guide captured August 28, 2026. It shows documented features, not our speed or support test.",
+    observations: [
+      "Wix says hosting is included with every Wix website.",
+      "A free site uses a Wix address; a custom domain needs a paid plan.",
+      "Check the live plan for today’s storage, bandwidth, price, and renewal rules.",
+    ],
+    href: "https://www.wix.com/free/web-hosting",
+    ctaLabel: "See Wix hosting",
+  },
+  {
+    name: "SiteGround WordPress hosting",
+    image: sitegroundPlans,
+    alt: "SiteGround public hosting page showing WordPress hosting plans, introductory prices, renewal prices, storage, and website limits.",
+    caption:
+      "Official SiteGround plan page captured August 25, 2026. Prices and plan rules can change, so check the live page before paying.",
+    observations: [
+      "The plan cards separate the first offer from the renewal price.",
+      "Website and storage limits change between plans.",
+      "Confirm which backups, restores, updates, and support jobs are included.",
+    ],
+    href: "https://www.siteground.com/wordpress-hosting.htm",
+    ctaLabel: "See SiteGround WordPress hosting",
+  },
+  {
+    name: "Shopify online store",
+    image: shopifyOnlineStore,
+    alt: "Shopify Help Center page explaining its hosted online store, pages, products, custom domains, checkout buttons, and responsive themes.",
+    caption:
+      "Official Shopify online-store guide captured August 28, 2026. It confirms store features, not sales results or support quality.",
+    observations: [
+      "Shopify describes the online store as the online home for a business.",
+      "The guide covers pages, products, a custom domain, checkout, and themes.",
+      "Check the current plan, payment fees, app costs, shipping tools, and export options.",
+    ],
+    href: "https://www.shopify.com/online",
+    ctaLabel: "See Shopify online stores",
+  },
+];
 
 const routes = [
   {
@@ -204,6 +257,18 @@ export default function BestWebHostingForSmallBusinessPage() {
               Read the hosting-type guide <ArrowRight size={15} aria-hidden="true" />
             </Link>
           </p>
+        </section>
+
+        <section id="provider-examples" className="anchor-target">
+          <p className="eyebrow">See the real provider pages</p>
+          <h2>Three providers that match three different business jobs.</h2>
+          <p>
+            These are examples, not winners. Wix shows the all-in-one builder
+            route, SiteGround shows managed WordPress plans, and Shopify shows
+            the hosted-store route. Use the screenshot to learn what to look for,
+            then open the current provider page before making a choice.
+          </p>
+          <ProviderProofList providers={providerExamples} />
         </section>
 
         <section id="decision-table" className="anchor-target">
