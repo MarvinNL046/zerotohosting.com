@@ -14,7 +14,7 @@ import { formatPageDate, publicPageFrontmatter } from "@/lib/public-pages";
 
 const whatsappHubPath = "/guides/whatsapp-ai-agent/";
 const aiHostingPath = "/guides/ai-agent-hosting/";
-const openClawVpsPath = "/guides/best-vps-for-openclaw/";
+const openClawVpsPath = "/tools/best-vps-for-openclaw/";
 
 export const metadata = createPageMetadata({
   title: "OpenClaw WhatsApp Setup: Connect the Built-In Channel",

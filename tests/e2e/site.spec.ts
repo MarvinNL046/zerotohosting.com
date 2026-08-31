@@ -46,14 +46,14 @@ test("mobile navigation closes after a client-side route change", async ({ page 
   await mobileNavigation.locator("summary").click();
   await expect(mobileNavigation).toHaveAttribute("open", "");
 
-  await mobileNavigation.getByRole("link", { name: "Choose hosting" }).click();
+  await mobileNavigation.getByRole("link", { name: "Tools", exact: true }).click();
 
-  await expect(page).toHaveURL(/\/tools\/hosting-type-chooser\/$/);
+  await expect(page).toHaveURL(/\/tools\/$/);
   await expect(page.locator(".mobile-navigation")).not.toHaveAttribute("open", "");
   await expect(
     page.getByRole("heading", {
       level: 1,
-      name: "Find a hosting type—or the next choice you need to make.",
+      name: "Web hosting tools for choosing, comparing, and calculating.",
     }),
   ).toBeVisible();
 });
@@ -84,12 +84,17 @@ test("chooser submits a complete static-site path and renders an explainable res
 });
 
 test("chooser remains functional with client-side JavaScript disabled", async ({
+  baseURL,
   browser,
 }, testInfo) => {
   test.skip(testInfo.project.name !== "desktop-chromium", "One no-JavaScript run is sufficient");
 
+  if (!baseURL) {
+    throw new Error("Playwright baseURL is required for the no-JavaScript test.");
+  }
+
   const context = await browser.newContext({
-    baseURL: "http://localhost:3000",
+    baseURL,
     javaScriptEnabled: false,
   });
   const page = await context.newPage();
@@ -185,25 +190,66 @@ test("guide anchors exist and retired commercial routes return not found", async
 
 test("the website and AI hosting clusters render their researched entry pages", async ({ page }) => {
   const routes = [
+    ["/tools/", "Web hosting tools for choosing, comparing, and calculating."],
     ["/guides/how-much-does-web-hosting-cost/", "How much does web hosting cost?"],
     ["/guides/website-builder-vs-web-hosting/", "Website builder vs web hosting"],
     ["/tools/website-cost-calculator/", "Website cost calculator"],
-    ["/guides/best-hosting-type-for-a-first-website/", "What is the best web hosting for beginners?"],
-    ["/guides/best-web-hosting-for-small-business/", "What is the best web hosting for a small business?"],
-    ["/guides/best-web-hosting-for-artists/", "What is the best web hosting for artists?"],
+    ["/tools/best-web-hosting-for-beginners/", "What is the best web hosting for beginners?"],
+    ["/tools/best-web-hosting-for-small-business/", "What is the best web hosting for a small business?"],
+    ["/tools/best-web-hosting-for-artists/", "What is the best web hosting for artists?"],
     ["/guides/hermes-agent-vs-openclaw/", "Hermes Agent vs OpenClaw: which setup fits you?"],
     ["/guides/ai-agent-hosting/", "AI agent hosting, explained simply"],
-    ["/guides/best-vps-for-openclaw/", "What is the best OpenClaw hosting setup?"],
-    ["/guides/best-vps-for-hermes-agent/", "What is the best VPS for Hermes Agent?"],
-    ["/guides/best-n8n-hosting/", "What is the best n8n hosting?"],
+    ["/tools/best-vps-for-openclaw/", "What is the best VPS for OpenClaw?"],
+    ["/tools/best-vps-for-hermes-agent/", "What is the best VPS for Hermes Agent?"],
+    ["/tools/best-n8n-hosting/", "What is the best n8n hosting?"],
   ] as const;
 
   for (const [path, heading] of routes) {
     await page.goto(path);
     await expect(page.getByRole("heading", { level: 1, name: heading })).toBeVisible();
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
+      "href",
+      absoluteUrl(path),
+    );
     await expect
       .poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth))
       .toBe(true);
+  }
+});
+
+test("legacy best-guide URLs redirect once to their canonical tool URLs", async ({ request }) => {
+  const redirects = [
+    [
+      "/guides/best-web-hosting-for-small-business/",
+      "/tools/best-web-hosting-for-small-business/",
+    ],
+    [
+      "/guides/best-web-hosting-for-artists/",
+      "/tools/best-web-hosting-for-artists/",
+    ],
+    [
+      "/guides/best-hosting-type-for-a-first-website/",
+      "/tools/best-web-hosting-for-beginners/",
+    ],
+    [
+      "/guides/best-vps-for-openclaw/",
+      "/tools/best-vps-for-openclaw/",
+    ],
+    [
+      "/guides/best-vps-for-hermes-agent/",
+      "/tools/best-vps-for-hermes-agent/",
+    ],
+    [
+      "/guides/best-n8n-hosting/",
+      "/tools/best-n8n-hosting/",
+    ],
+  ] as const;
+
+  for (const [source, destination] of redirects) {
+    const response = await request.get(source, { maxRedirects: 0 });
+
+    expect(response.status()).toBe(301);
+    expect(response.headers().location).toBe(destination);
   }
 });
 
@@ -303,10 +349,10 @@ test("website cost calculator keeps unknown amounts out of a complete-looking to
   await expect(page.getByTestId("recurring-change")).toHaveText("$47.50");
 });
 
-test("first-website guide keeps provider screenshots dated, named, and subordinate", async ({
+test("beginner hosting tool keeps provider screenshots dated, named, and subordinate", async ({
   page,
 }) => {
-  await page.goto("/guides/best-hosting-type-for-a-first-website/");
+  await page.goto("/tools/best-web-hosting-for-beginners/");
 
   await expect(
     page.getByRole("heading", {
@@ -314,8 +360,8 @@ test("first-website guide keeps provider screenshots dated, named, and subordina
       name: "What is the best web hosting for beginners?",
     }),
   ).toBeVisible();
-  await expect(page.locator("time[datetime='2026-08-28']").first()).toHaveText(
-    "August 28, 2026",
+  await expect(page.locator("time[datetime='2026-08-31']").first()).toHaveText(
+    "August 31, 2026",
   );
   await expect(
     page.getByRole("link", { name: "Match my site to a hosting type" }).first(),

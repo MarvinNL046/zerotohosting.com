@@ -51,6 +51,7 @@ export default function WebsiteCostCalculatorPage() {
   const page = publicPageFrontmatter.websiteCostCalculator;
   const breadcrumbItems = [
     { href: "/", label: "Home" },
+    { href: publicPageFrontmatter.toolsHub.path, label: "Tools" },
     { href: page.path, label: "Website cost calculator" },
   ];
 
@@ -59,7 +60,10 @@ export default function WebsiteCostCalculatorPage() {
       <BreadcrumbJsonLd items={breadcrumbItems} />
       <WebsiteCostCalculatorJsonLd />
       <EditorialGuideHero
-        breadcrumbs={[{ href: "/", label: "Home" }, { label: "Website cost calculator" }]}
+        breadcrumbs={[
+          { href: publicPageFrontmatter.toolsHub.path, label: "Tools" },
+          { label: "Website cost calculator" },
+        ]}
         eyebrow={
           <>
             Free cost calculator · Updated{" "}

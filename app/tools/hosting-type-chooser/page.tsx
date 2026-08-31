@@ -86,6 +86,7 @@ export default async function HostingTypeChooserPage({
   const recommendation = submitted ? recommendHosting(input) : null;
   const breadcrumbItems = [
     { href: "/", label: "Home" },
+    { href: publicPageFrontmatter.toolsHub.path, label: "Tools" },
     { href: "/tools/hosting-type-chooser/", label: "Hosting Type Chooser" },
   ];
 
@@ -95,7 +96,12 @@ export default async function HostingTypeChooserPage({
       <BreadcrumbJsonLd items={breadcrumbItems} />
 
       <header className="chooser-hero page-shell">
-        <Breadcrumb items={[{ label: "Tools" }, { label: "Hosting Type Chooser" }]} />
+        <Breadcrumb
+          items={[
+            { label: "Tools", href: publicPageFrontmatter.toolsHub.path },
+            { label: "Hosting Type Chooser" },
+          ]}
+        />
         <p className="eyebrow">Hosting choice tool</p>
         <h1>Find a hosting type—or the next choice you need to make.</h1>
         <p className="lede">

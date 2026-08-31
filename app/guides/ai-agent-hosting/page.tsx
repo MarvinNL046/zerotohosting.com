@@ -13,9 +13,9 @@ import { createPageMetadata } from "@/lib/metadata";
 import { formatPageDate, publicPageFrontmatter } from "@/lib/public-pages";
 
 const comparisonPath = "/guides/hermes-agent-vs-openclaw/";
-const openClawVpsPath = "/guides/best-vps-for-openclaw/";
-const hermesVpsPath = "/guides/best-vps-for-hermes-agent/";
-const n8nHostingPath = "/guides/best-n8n-hosting/";
+const openClawVpsPath = "/tools/best-vps-for-openclaw/";
+const hermesVpsPath = "/tools/best-vps-for-hermes-agent/";
+const n8nHostingPath = "/tools/best-n8n-hosting/";
 const whatsappAiAgentPath = "/guides/whatsapp-ai-agent/";
 
 export const metadata = createPageMetadata({

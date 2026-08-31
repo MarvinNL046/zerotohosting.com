@@ -26,7 +26,7 @@ export const metadata = createPageMetadata({
   title: "Best web hosting for small business: 4 choices",
   description:
     "Find the best web hosting type for a small business. Compare a website builder, managed WordPress, static hosting, and hosted ecommerce before you pay.",
-  path: publicPageFrontmatter.smallBusinessHostingGuide.path,
+  path: publicPageFrontmatter.smallBusinessHostingTool.path,
 });
 
 const toc = [
@@ -153,10 +153,10 @@ const faqs = [
 ] as const;
 
 export default function BestWebHostingForSmallBusinessPage() {
-  const page = publicPageFrontmatter.smallBusinessHostingGuide;
+  const page = publicPageFrontmatter.smallBusinessHostingTool;
   const breadcrumbs = [
     { href: "/", label: "Home" },
-    { href: publicPageFrontmatter.hostingTypesGuide.path, label: "Hosting types" },
+    { href: publicPageFrontmatter.toolsHub.path, label: "Tools" },
     { href: page.path, label: "Small-business hosting" },
   ];
 
@@ -165,7 +165,7 @@ export default function BestWebHostingForSmallBusinessPage() {
       <BreadcrumbJsonLd items={breadcrumbs} />
       <EditorialGuideHero
         breadcrumbs={[
-          { href: publicPageFrontmatter.hostingTypesGuide.path, label: "Hosting types" },
+          { href: publicPageFrontmatter.toolsHub.path, label: "Tools" },
           { label: "Small-business hosting" },
         ]}
         eyebrow={
