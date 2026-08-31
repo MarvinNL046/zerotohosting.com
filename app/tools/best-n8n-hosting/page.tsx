@@ -18,7 +18,7 @@ export const metadata = createPageMetadata({
   title: "Best n8n hosting: cloud vs self-hosted",
   description:
     "Compare n8n Cloud, managed n8n hosting, a self-managed Docker VPS, and a larger self-hosted setup. Check updates, webhooks, backups, and security.",
-  path: publicPageFrontmatter.bestN8nHostingGuide.path,
+  path: publicPageFrontmatter.bestN8nHostingTool.path,
 });
 
 const toc = [
@@ -94,10 +94,10 @@ const faqs = [
 ] as const;
 
 export default function BestN8nHostingPage() {
-  const page = publicPageFrontmatter.bestN8nHostingGuide;
+  const page = publicPageFrontmatter.bestN8nHostingTool;
   const breadcrumbs = [
     { href: "/", label: "Home" },
-    { href: aiHostingPath, label: "AI agent hosting" },
+    { href: publicPageFrontmatter.toolsHub.path, label: "Tools" },
     { href: page.path, label: "Best n8n hosting" },
   ];
 
@@ -106,7 +106,7 @@ export default function BestN8nHostingPage() {
       <BreadcrumbJsonLd items={breadcrumbs} />
       <EditorialGuideHero
         breadcrumbs={[
-          { href: aiHostingPath, label: "AI agent hosting" },
+          { href: publicPageFrontmatter.toolsHub.path, label: "Tools" },
           { label: "Best n8n hosting" },
         ]}
         eyebrow={

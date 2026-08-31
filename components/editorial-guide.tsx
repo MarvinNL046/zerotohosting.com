@@ -51,7 +51,7 @@ export function EditorialGuideHero({
           </Link>
         ))}
       </div>
-      <ul className="trust-list" aria-label="Guide limits">
+      <ul className="trust-list" aria-label="Page limits">
         {trustItems.map((item) => (
           <li key={item}>
             <CheckCircle2 size={15} aria-hidden="true" />
@@ -72,7 +72,7 @@ export function EditorialGuideLayout({
 }>) {
   return (
     <div className="guide-layout page-shell pilot-guide-layout">
-      <nav className="guide-toc" aria-label="Guide sections">
+      <nav className="guide-toc" aria-label="Page sections">
         <h2>On this page</h2>
         <ol>
           {toc.map(([id, label]) => (

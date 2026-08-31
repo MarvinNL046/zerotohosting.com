@@ -21,7 +21,7 @@ export const metadata = createPageMetadata({
   title: "Best web hosting for beginners: 4 choices",
   description:
     "Find the best web hosting for beginners. Match the plan to a site builder, WordPress, static files, or a custom app before comparing companies.",
-  path: publicPageFrontmatter.firstWebsiteHostingGuide.path,
+  path: publicPageFrontmatter.firstWebsiteHostingTool.path,
 });
 
 const toc = [
@@ -186,16 +186,16 @@ function ChooserTextLink() {
   );
 }
 
-export default function FirstWebsiteHostingGuidePage() {
+export default function BestWebHostingForBeginnersPage() {
   const breadcrumbItems = [
     { href: "/", label: "Home" },
     {
-      href: publicPageFrontmatter.hostingTypesGuide.path,
-      label: "Types of web hosting",
+      href: publicPageFrontmatter.toolsHub.path,
+      label: "Tools",
     },
     {
-      href: publicPageFrontmatter.firstWebsiteHostingGuide.path,
-      label: "Best hosting type for a first website",
+      href: publicPageFrontmatter.firstWebsiteHostingTool.path,
+      label: "Best web hosting for beginners",
     },
   ];
 
@@ -207,8 +207,8 @@ export default function FirstWebsiteHostingGuidePage() {
         <Breadcrumb
           items={[
             {
-              label: "Types of web hosting",
-              href: publicPageFrontmatter.hostingTypesGuide.path,
+              label: "Tools",
+              href: publicPageFrontmatter.toolsHub.path,
             },
             { label: "First website hosting" },
           ]}
@@ -217,11 +217,11 @@ export default function FirstWebsiteHostingGuidePage() {
           Updated{" "}
           <time
             dateTime={
-              publicPageFrontmatter.firstWebsiteHostingGuide.lastModified
+              publicPageFrontmatter.firstWebsiteHostingTool.lastModified
             }
           >
             {formatPageDate(
-              publicPageFrontmatter.firstWebsiteHostingGuide.lastModified,
+              publicPageFrontmatter.firstWebsiteHostingTool.lastModified,
             )}
           </time>
         </p>
@@ -240,7 +240,7 @@ export default function FirstWebsiteHostingGuidePage() {
             <ArrowRight size={17} aria-hidden="true" />
           </Link>
         </div>
-        <ul className="trust-list" aria-label="Guide limits">
+        <ul className="trust-list" aria-label="Page limits">
           <li>
             <CheckCircle2 size={15} aria-hidden="true" />
             No provider ranking
@@ -257,7 +257,7 @@ export default function FirstWebsiteHostingGuidePage() {
       </header>
 
       <div className="guide-layout page-shell pilot-guide-layout">
-        <aside className="guide-toc" aria-label="Guide sections">
+        <aside className="guide-toc" aria-label="Page sections">
           <h2>On this page</h2>
           <ol>
             {toc.map(([id, label]) => (
@@ -314,12 +314,12 @@ export default function FirstWebsiteHostingGuidePage() {
               </Link>
             </p>
             <p className="supporting-link-row">
-              <span>Guides for a specific job:</span>
-              <Link className="text-link" href="/guides/best-web-hosting-for-small-business/">
+              <span>Comparisons for a specific job:</span>
+              <Link className="text-link" href="/tools/best-web-hosting-for-small-business/">
                 Small-business hosting
                 <ArrowRight size={16} aria-hidden="true" />
               </Link>
-              <Link className="text-link" href="/guides/best-web-hosting-for-artists/">
+              <Link className="text-link" href="/tools/best-web-hosting-for-artists/">
                 Artist portfolio hosting
                 <ArrowRight size={16} aria-hidden="true" />
               </Link>

@@ -82,6 +82,12 @@ export const publicPageFrontmatter = {
     changeFrequency: "weekly",
     priority: 1,
   }),
+  toolsHub: definePublicPage({
+    path: "/tools/",
+    lastModified: "2026-08-31",
+    changeFrequency: "weekly",
+    priority: 0.85,
+  }),
   hostingChooser: definePublicPage({
     path: "/tools/hosting-type-chooser/",
     lastModified: "2026-08-26",
@@ -94,21 +100,21 @@ export const publicPageFrontmatter = {
     changeFrequency: "monthly",
     priority: 0.8,
   }),
-  firstWebsiteHostingGuide: definePublicPage({
-    path: "/guides/best-hosting-type-for-a-first-website/",
-    lastModified: "2026-08-28",
+  firstWebsiteHostingTool: definePublicPage({
+    path: "/tools/best-web-hosting-for-beginners/",
+    lastModified: "2026-08-31",
     changeFrequency: "monthly",
     priority: 0.7,
   }),
-  smallBusinessHostingGuide: definePublicPage({
-    path: "/guides/best-web-hosting-for-small-business/",
-    lastModified: "2026-08-28",
+  smallBusinessHostingTool: definePublicPage({
+    path: "/tools/best-web-hosting-for-small-business/",
+    lastModified: "2026-08-31",
     changeFrequency: "monthly",
     priority: 0.74,
   }),
-  artistHostingGuide: definePublicPage({
-    path: "/guides/best-web-hosting-for-artists/",
-    lastModified: "2026-08-28",
+  artistHostingTool: definePublicPage({
+    path: "/tools/best-web-hosting-for-artists/",
+    lastModified: "2026-08-31",
     changeFrequency: "monthly",
     priority: 0.68,
   }),
@@ -142,21 +148,21 @@ export const publicPageFrontmatter = {
     changeFrequency: "monthly",
     priority: 0.75,
   }),
-  bestVpsForOpenClawGuide: definePublicPage({
-    path: "/guides/best-vps-for-openclaw/",
-    lastModified: "2026-08-28",
+  bestVpsForOpenClawTool: definePublicPage({
+    path: "/tools/best-vps-for-openclaw/",
+    lastModified: "2026-08-31",
     changeFrequency: "monthly",
     priority: 0.74,
   }),
-  bestVpsForHermesGuide: definePublicPage({
-    path: "/guides/best-vps-for-hermes-agent/",
-    lastModified: "2026-08-28",
+  bestVpsForHermesTool: definePublicPage({
+    path: "/tools/best-vps-for-hermes-agent/",
+    lastModified: "2026-08-31",
     changeFrequency: "monthly",
     priority: 0.7,
   }),
-  bestN8nHostingGuide: definePublicPage({
-    path: "/guides/best-n8n-hosting/",
-    lastModified: "2026-08-28",
+  bestN8nHostingTool: definePublicPage({
+    path: "/tools/best-n8n-hosting/",
+    lastModified: "2026-08-31",
     changeFrequency: "monthly",
     priority: 0.72,
   }),

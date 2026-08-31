@@ -18,10 +18,10 @@ import hostingerSetup from "@/public/images/guides/best-vps-for-openclaw/hosting
 const aiHostingPath = "/guides/ai-agent-hosting/";
 
 export const metadata = createPageMetadata({
-  title: "Best OpenClaw hosting: 5 setup options",
+  title: "Best VPS for OpenClaw: 5 hosting options",
   description:
-    "Compare five OpenClaw hosting routes, including VPS and managed setups. Check setup work, updates, backups, access, and who cares for the server.",
-  path: publicPageFrontmatter.bestVpsForOpenClawGuide.path,
+    "Compare five VPS and managed OpenClaw hosting routes. Check setup work, updates, backups, access, and who cares for the server.",
+  path: publicPageFrontmatter.bestVpsForOpenClawTool.path,
 });
 
 const toc = [
@@ -164,11 +164,11 @@ const faqs = [
   },
 ] as const;
 
-export default function BestVpsForOpenClawGuidePage() {
-  const page = publicPageFrontmatter.bestVpsForOpenClawGuide;
+export default function BestVpsForOpenClawPage() {
+  const page = publicPageFrontmatter.bestVpsForOpenClawTool;
   const breadcrumbItems = [
     { href: "/", label: "Home" },
-    { href: aiHostingPath, label: "AI agent hosting" },
+    { href: publicPageFrontmatter.toolsHub.path, label: "Tools" },
     { href: page.path, label: "Best VPS for OpenClaw" },
   ];
 
@@ -177,7 +177,7 @@ export default function BestVpsForOpenClawGuidePage() {
       <BreadcrumbJsonLd items={breadcrumbItems} />
       <EditorialGuideHero
         breadcrumbs={[
-          { href: aiHostingPath, label: "AI agent hosting" },
+          { href: publicPageFrontmatter.toolsHub.path, label: "Tools" },
           { label: "Best VPS for OpenClaw" },
         ]}
         eyebrow={
@@ -186,7 +186,7 @@ export default function BestVpsForOpenClawGuidePage() {
             <time dateTime={page.lastModified}>{formatPageDate(page.lastModified)}</time>
           </>
         }
-        title="What is the best OpenClaw hosting setup?"
+        title="What is the best VPS for OpenClaw?"
         lede={
           <p>
             OpenClaw hosting can be a managed setup or a VPS, which is a virtual

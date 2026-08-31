@@ -18,7 +18,7 @@ export const siteConfig = {
 } as const;
 
 export const primaryNavigation: readonly SiteLink[] = [
-  { href: "/tools/hosting-type-chooser/", label: "Choose hosting" },
+  { href: "/tools/", label: "Tools" },
   { href: "/guides/types-of-web-hosting/", label: "Hosting types" },
   { href: "/guides/how-much-does-web-hosting-cost/", label: "Website costs" },
   { href: "/guides/ai-agent-hosting/", label: "AI agents" },
@@ -29,10 +29,11 @@ export const footerNavigation: readonly FooterNavigationGroup[] = [
   {
     title: "Explore",
     links: [
+      { href: "/tools/", label: "All hosting tools" },
       { href: "/tools/hosting-type-chooser/", label: "Choose hosting" },
       { href: "/guides/types-of-web-hosting/", label: "Types of web hosting" },
       {
-        href: "/guides/best-hosting-type-for-a-first-website/",
+        href: "/tools/best-web-hosting-for-beginners/",
         label: "First website hosting",
       },
       {
@@ -62,7 +63,7 @@ export const footerNavigation: readonly FooterNavigationGroup[] = [
         label: "Hermes Agent vs OpenClaw",
       },
       {
-        href: "/guides/best-vps-for-openclaw/",
+        href: "/tools/best-vps-for-openclaw/",
         label: "Best VPS for OpenClaw",
       },
     ],

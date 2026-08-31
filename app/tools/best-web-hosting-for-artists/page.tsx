@@ -19,13 +19,13 @@ import adobePortfolio from "@/public/images/guides/provider-choices/adobe-portfo
 import squarespacePortfolio from "@/public/images/guides/provider-choices/squarespace-portfolio-guide-2026-08-28.png";
 import wixPhotographerTools from "@/public/images/guides/provider-choices/wix-photographer-tools-2026-08-28.png";
 
-const firstWebsitePath = "/guides/best-hosting-type-for-a-first-website/";
+const firstWebsitePath = "/tools/best-web-hosting-for-beginners/";
 
 export const metadata = createPageMetadata({
   title: "Best web hosting for artists: 4 options",
   description:
     "Choose the best web hosting type for an artist portfolio. Compare Adobe Portfolio, hosted builders, managed WordPress, and static hosting.",
-  path: publicPageFrontmatter.artistHostingGuide.path,
+  path: publicPageFrontmatter.artistHostingTool.path,
 });
 
 const toc = [
@@ -141,10 +141,10 @@ const faqs = [
 ] as const;
 
 export default function BestWebHostingForArtistsPage() {
-  const page = publicPageFrontmatter.artistHostingGuide;
+  const page = publicPageFrontmatter.artistHostingTool;
   const breadcrumbs = [
     { href: "/", label: "Home" },
-    { href: firstWebsitePath, label: "First website hosting" },
+    { href: publicPageFrontmatter.toolsHub.path, label: "Tools" },
     { href: page.path, label: "Hosting for artists" },
   ];
 
@@ -153,7 +153,7 @@ export default function BestWebHostingForArtistsPage() {
       <BreadcrumbJsonLd items={breadcrumbs} />
       <EditorialGuideHero
         breadcrumbs={[
-          { href: firstWebsitePath, label: "First website hosting" },
+          { href: publicPageFrontmatter.toolsHub.path, label: "Tools" },
           { label: "Hosting for artists" },
         ]}
         eyebrow={
@@ -173,7 +173,7 @@ export default function BestWebHostingForArtistsPage() {
         }
         actions={[
           { href: "#decision-table", label: "Find my portfolio route" },
-          { href: firstWebsitePath, label: "Read the beginner guide", quiet: true },
+          { href: firstWebsitePath, label: "Read the beginner comparison", quiet: true },
         ]}
         trustItems={[
           "Portfolio needs come first",
@@ -332,7 +332,7 @@ export default function BestWebHostingForArtistsPage() {
             <p className="pilot-final-copy">The best-looking system is not useful when adding one new project feels too hard.</p>
           </div>
           <Link className="button button-accent" href={firstWebsitePath}>
-            Read the beginner guide <ArrowRight size={17} aria-hidden="true" />
+            Read the beginner comparison <ArrowRight size={17} aria-hidden="true" />
           </Link>
         </div>
       </section>

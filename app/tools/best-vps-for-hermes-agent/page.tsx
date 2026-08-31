@@ -19,7 +19,7 @@ export const metadata = createPageMetadata({
   title: "Best VPS for Hermes Agent: what to check",
   description:
     "Choose a VPS for Hermes Agent without guessing. Check Docker, persistent storage, dashboard access, backups, updates, and who manages the server.",
-  path: publicPageFrontmatter.bestVpsForHermesGuide.path,
+  path: publicPageFrontmatter.bestVpsForHermesTool.path,
 });
 
 const toc = [
@@ -67,10 +67,10 @@ const faqs = [
 ] as const;
 
 export default function BestVpsForHermesAgentPage() {
-  const page = publicPageFrontmatter.bestVpsForHermesGuide;
+  const page = publicPageFrontmatter.bestVpsForHermesTool;
   const breadcrumbs = [
     { href: "/", label: "Home" },
-    { href: aiHostingPath, label: "AI agent hosting" },
+    { href: publicPageFrontmatter.toolsHub.path, label: "Tools" },
     { href: page.path, label: "Best VPS for Hermes Agent" },
   ];
 
@@ -79,7 +79,7 @@ export default function BestVpsForHermesAgentPage() {
       <BreadcrumbJsonLd items={breadcrumbs} />
       <EditorialGuideHero
         breadcrumbs={[
-          { href: aiHostingPath, label: "AI agent hosting" },
+          { href: publicPageFrontmatter.toolsHub.path, label: "Tools" },
           { label: "Best VPS for Hermes Agent" },
         ]}
         eyebrow={
